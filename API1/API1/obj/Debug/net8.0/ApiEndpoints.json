@@ -2,7 +2,7 @@
   {
     "ContainingType": "API1.Controllers.UserController",
     "Method": "Get",
-    "RelativePath": "User",
+    "RelativePath": "User/Login",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

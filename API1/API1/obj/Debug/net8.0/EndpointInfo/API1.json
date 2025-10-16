@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/User": {
+    "/User/Login": {
       "get": {
         "tags": [
           "User"

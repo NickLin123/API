@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace API1.Controllers
 {
@@ -8,7 +9,7 @@ namespace API1.Controllers
     {
         private static readonly string[] Info = new[]
         {
-            "登入",
+            "登入成功",
             "登出成功"
         };
 
@@ -19,16 +20,33 @@ namespace API1.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetUserLog")]
+        [HttpGet("Login",Name = "GetUserLog")]
         public IEnumerable<UserInfo> Get()
         {
+            string UserEnterAccount = "Nick";
+            string UserPassword = "1234";
+            string Account = "Nic";
+            string Password = "123";
+            Boolean LoginState = false;
+
+            if (UserEnterAccount == Account && UserPassword == Password)
+            {
+
+                LoginState = true;
+                _logger.LogInformation("登入成功",LoginState);
+            }
+            else
+            {
+                _logger.LogWarning("登入失敗", LoginState);
+            }
             return Enumerable.Range(0, Info.Length).Select(index => new UserInfo
             {
                 Action = Info[index]
             })
-            .ToArray();
+          .ToArray();
         }
-    }
+}
+
 
     public class UserInfo
     {
