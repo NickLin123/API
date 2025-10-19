@@ -5,38 +5,95 @@
     "version": "1.0"
   },
   "paths": {
-    "/User/Login": {
-      "get": {
+    "/Test/Accacalate": {
+      "post": {
         "tags": [
-          "User"
+          "Test"
         ],
-        "operationId": "GetUserLog",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestReq"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserInfo"
-                  }
+                  "$ref": "#/components/schemas/TestRes"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserInfo"
-                  }
+                  "$ref": "#/components/schemas/TestRes"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserInfo"
-                  }
+                  "$ref": "#/components/schemas/TestRes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/Login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLoginRes"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLoginRes"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLoginRes"
                 }
               }
             }
@@ -86,7 +143,53 @@
   },
   "components": {
     "schemas": {
-      "UserInfo": {
+      "TestReq": {
+        "type": "object",
+        "properties": {
+          "userEnterNum1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userEnterNum2": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TestRes": {
+        "type": "object",
+        "properties": {
+          "number1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "number2": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ansAdd": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ansSub": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserLoginReq": {
+        "type": "object",
+        "properties": {
+          "userEnterAccount": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserLoginRes": {
         "type": "object",
         "properties": {
           "action": {
